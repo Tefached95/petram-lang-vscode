@@ -1,10 +1,21 @@
-### Ergor: Rigor Redefined
+# Ergor: Rigor Redefined
 
 ## What is Ergor?
 
 Ergor is a general-purpose programming language with verbosity as a feature. It aims to be extremely strict, rigid, but still ergonomic and expressive enough to the point where writing code in it becomes effortless.
 
-### Code example
+## What is the point of Ergor?
+
+**None!** While I would love it if this project saw some adoption, I am fully aware that it's quirky and could definitely be seen as counterintuitive by some. Let me list what Ergor is ****not****
+  
+* It is **NOT** a C killer or anything
+* It is **NOT** meant to be extremely popular or to replace any existing workflow
+* It is **NOT** meant to cater to already existing languages and their syntactical principles.
+
+I'm developing Ergor as a passion project for myself first, and others second. I have firm principles on how it should operate and what its purpose is, and I will maintaint its "quirks" as much as possible (within reason, of course).
+It's an excercise in language design, lexing, parsing, and integrating into a compiler backed ([QBE tentatively](https://c9x.me/compile/))
+
+## Code example
 
 ```erg
 {-
