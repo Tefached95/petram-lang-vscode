@@ -1,4 +1,4 @@
-# Petram: Rigor Redefined
+# Petram: Chiseled for Clarity
 
 ## What is Petram?
 
@@ -31,7 +31,7 @@ It's an excercise in language design, lexing, parsing, and integrating into a co
 -- Here, we use Void and print "Hello, World!" to stdout.
 func #[main :: args: List<String>]#: Void ->
     #[println :: message: "Hello, World!\n"]#
-
+```
 
 ```erg
 -- variables.petra
