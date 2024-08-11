@@ -107,13 +107,13 @@
               "name": "entity.name.function.petra"
             },
             "2": {
-              "name": "punctuation.section.brackets.begin.petra"
+              "name": "punctuation.section.expression.brackets.begin.petra"
             }
           },
           "end": "\\]#",
           "endCaptures": {
             "0": {
-              "name": "punctuation.section.brackets.end.petra"
+              "name": "punctuation.section.expression.brackets.end.petra"
             }
           },
           "patterns": [
@@ -151,12 +151,29 @@
     "brackets": {
       "patterns": [
         {
-          "name": "punctuation.section.brackets.begin.petra",
-          "match": "#\\[|\\{\\|"
+          "name": "punctuation.section.list.brackets.begin.petra",
+          "begin": "\\{\\|",
+          "end": "\\|\\}",
+          "patterns": [
+            {
+              "name": "punctuation.section.expression.brackets.petra",
+              "begin": "#\\[",
+              "end": "\\]#",
+              "patterns": [
+                {
+                  "include": "$self"
+                }
+              ]
+            }
+          ]
         },
         {
-          "name": "punctuation.section.brackets.end.petra",
-          "match": "\\]#|\\|\\}"
+          "name": "punctuation.section.expression.brackets.begin.petra",
+          "match": "#\\["
+        },
+        {
+          "name": "punctuation.section.expression.brackets.end.petra",
+          "match": "\\]#"
         }
       ]
     },
@@ -167,7 +184,7 @@
           "match": "(#\\[)(module)\\s+(::)\\s+([A-Z][a-zA-Z0-9]*(::[A-Z][a-zA-Z0-9]*)*)(\\]#)",
           "captures": {
             "1": {
-              "name": "punctuation.section.brackets.begin.petra"
+              "name": "punctuation.section.expression.brackets.begin.petra"
             },
             "2": {
               "name": "keyword.control.module.petra"
@@ -179,7 +196,7 @@
               "name": "entity.name.module.petra"
             },
             "6": {
-              "name": "punctuation.section.brackets.end.petra"
+              "name": "punctuation.section.expression.brackets.end.petra"
             }
           }
         },
@@ -188,7 +205,7 @@
           "match": "(#\\[)(import)\\s+(::)\\s+([A-Z][a-zA-Z0-9]*(::[A-Z][a-zA-Z0-9]*)*)\\s+(as)\\s+([A-Z][a-zA-Z0-9]*)(\\]#)",
           "captures": {
             "1": {
-              "name": "punctuation.section.brackets.begin.petra"
+              "name": "punctuation.section.expression.brackets.begin.petra"
             },
             "2": {
               "name": "keyword.control.import.petra"
@@ -206,7 +223,7 @@
               "name": "entity.name.module.alias.petra"
             },
             "8": {
-              "name": "punctuation.section.brackets.end.petra"
+              "name": "punctuation.section.expression.brackets.end.petra"
             }
           }
         }
