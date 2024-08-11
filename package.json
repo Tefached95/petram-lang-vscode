@@ -1,0 +1,34 @@
+{
+  "name": "ergor-lang",
+  "displayName": "Ergor language support for Visual Studio Code",
+  "description": "Ergor: Rigor Redefined - language support for Visual Studio code, including syntax highlighting and proper indentation guides.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.92.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "ergor",
+        "aliases": [
+          "Ergor",
+          "erg"
+        ],
+        "extensions": [
+          ".erg"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "ergor",
+        "scopeName": "source.erg",
+        "path": "./syntaxes/erg.tmLanguage.json"
+      }
+    ]
+  }
+}
