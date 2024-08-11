@@ -1,7 +1,7 @@
 {
-  "name": "ergor-lang",
-  "displayName": "Ergor language support for Visual Studio Code",
-  "description": "Ergor: Rigor Redefined - language support for Visual Studio code, including syntax highlighting and proper indentation guides.",
+  "name": "petram-lang",
+  "displayName": "Petram Language Support",
+  "description": "Syntax highlighting and language support for Petram",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.92.0"
@@ -12,22 +12,22 @@
   "contributes": {
     "languages": [
       {
-        "id": "ergor",
+        "id": "petram",
         "aliases": [
-          "Ergor",
-          "erg"
+          "Petram",
+          "petram"
         ],
         "extensions": [
-          ".erg"
+          ".petra"
         ],
         "configuration": "./language-configuration.json"
       }
     ],
     "grammars": [
       {
-        "language": "ergor",
-        "scopeName": "source.erg",
-        "path": "./syntaxes/erg.tmLanguage.json"
+        "language": "petram",
+        "scopeName": "source.petra",
+        "path": "./syntaxes/petram.tmLanguage.json"
       }
     ]
   }
