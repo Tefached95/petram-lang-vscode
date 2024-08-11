@@ -6,6 +6,9 @@
   ],
   "patterns": [
     {
+      "include": "#expression_brackets"
+    },
+    {
       "include": "#keywords"
     },
     {
@@ -30,7 +33,7 @@
       "include": "#operators"
     },
     {
-      "include": "#brackets"
+      "include": "#list_brackets"
     },
     {
       "include": "#modules"
@@ -148,32 +151,43 @@
         }
       ]
     },
-    "brackets": {
+    "expression_brackets": {
+      "name": "meta.expression.petra",
+      "begin": "#\\[",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.section.expression.brackets.begin.petra"
+        }
+      },
+      "end": "\\]#",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.section.expression.brackets.end.petra"
+        }
+      },
       "patterns": [
         {
-          "name": "punctuation.section.list.brackets.begin.petra",
-          "begin": "\\{\\|",
-          "end": "\\|\\}",
-          "patterns": [
-            {
-              "name": "punctuation.section.expression.brackets.petra",
-              "begin": "#\\[",
-              "end": "\\]#",
-              "patterns": [
-                {
-                  "include": "$self"
-                }
-              ]
-            }
-          ]
-        },
+          "include": "$self"
+        }
+      ]
+    },
+    "list_brackets": {
+      "name": "meta.list.petra",
+      "begin": "\\{\\|",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.section.list.brackets.begin.petra"
+        }
+      },
+      "end": "\\|\\}",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.section.list.brackets.end.petra"
+        }
+      },
+      "patterns": [
         {
-          "name": "punctuation.section.expression.brackets.begin.petra",
-          "match": "#\\["
-        },
-        {
-          "name": "punctuation.section.expression.brackets.end.petra",
-          "match": "\\]#"
+          "include": "$self"
         }
       ]
     },
