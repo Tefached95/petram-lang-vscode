@@ -31,6 +31,9 @@
     },
     {
       "include": "#brackets"
+    },
+    {
+      "include": "#modules"
     }
   ],
   "repository": {
@@ -38,7 +41,7 @@
       "patterns": [
         {
           "name": "keyword.control.petra",
-          "match": "\\b(if|else|foreach|in|match|func|struct|trait|new|return|constrain|field|method)\\b"
+          "match": "\\b(if|else|foreach|in|match|func|struct|trait|new|return|constrain|field|method|import|as)\\b"
         }
       ]
     },
@@ -138,18 +141,74 @@
         {
           "name": "keyword.operator.pipe.petra",
           "match": "\\|>"
+        },
+        {
+          "name": "keyword.operator.module.petra",
+          "match": "::"
         }
       ]
     },
     "brackets": {
       "patterns": [
         {
-          "name": "punctuation.section.braces.begin.petra",
-          "match": "\\{\\|"
+          "name": "punctuation.section.brackets.begin.petra",
+          "match": "#\\[|\\{\\|"
         },
         {
-          "name": "punctuation.section.braces.end.petra",
-          "match": "\\|\\}"
+          "name": "punctuation.section.brackets.end.petra",
+          "match": "\\]#|\\|\\}"
+        }
+      ]
+    },
+    "modules": {
+      "patterns": [
+        {
+          "name": "meta.module.declaration.petra",
+          "match": "(#\\[)(module)\\s+(::)\\s+([A-Z][a-zA-Z0-9]*(::[A-Z][a-zA-Z0-9]*)*)(\\]#)",
+          "captures": {
+            "1": {
+              "name": "punctuation.section.brackets.begin.petra"
+            },
+            "2": {
+              "name": "keyword.control.module.petra"
+            },
+            "3": {
+              "name": "keyword.operator.module.petra"
+            },
+            "4": {
+              "name": "entity.name.module.petra"
+            },
+            "6": {
+              "name": "punctuation.section.brackets.end.petra"
+            }
+          }
+        },
+        {
+          "name": "meta.import.petra",
+          "match": "(#\\[)(import)\\s+(::)\\s+([A-Z][a-zA-Z0-9]*(::[A-Z][a-zA-Z0-9]*)*)\\s+(as)\\s+([A-Z][a-zA-Z0-9]*)(\\]#)",
+          "captures": {
+            "1": {
+              "name": "punctuation.section.brackets.begin.petra"
+            },
+            "2": {
+              "name": "keyword.control.import.petra"
+            },
+            "3": {
+              "name": "keyword.operator.module.petra"
+            },
+            "4": {
+              "name": "entity.name.module.petra"
+            },
+            "6": {
+              "name": "keyword.control.as.petra"
+            },
+            "7": {
+              "name": "entity.name.module.alias.petra"
+            },
+            "8": {
+              "name": "punctuation.section.brackets.end.petra"
+            }
+          }
         }
       ]
     }
