@@ -6,7 +6,13 @@
   ],
   "patterns": [
     {
+      "include": "#comments"
+    },
+    {
       "include": "#expression_brackets"
+    },
+    {
+      "include": "#list_brackets"
     },
     {
       "include": "#keywords"
@@ -24,27 +30,67 @@
       "include": "#strings"
     },
     {
-      "include": "#comments"
-    },
-    {
       "include": "#functions"
     },
     {
       "include": "#operators"
     },
     {
-      "include": "#list_brackets"
-    },
-    {
       "include": "#modules"
     }
   ],
   "repository": {
+    "expression_brackets": {
+      "name": "meta.brackets.expression.petra",
+      "begin": "#\\{",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.brackets.begin.petra"
+        }
+      },
+      "end": "\\}#",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.brackets.end.petra"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#expression_brackets"
+        },
+        {
+          "include": "$self"
+        }
+      ]
+    },
+    "list_brackets": {
+      "name": "meta.brackets.list.petra",
+      "begin": "\\{\\|",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.list.begin.petra"
+        }
+      },
+      "end": "\\|\\}",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.list.end.petra"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#list_brackets"
+        },
+        {
+          "include": "$self"
+        }
+      ]
+    },
     "keywords": {
       "patterns": [
         {
           "name": "keyword.control.petra",
-          "match": "\\b(if|else|foreach|in|match|func|struct|trait|new|return|constrain|field|method|import|as)\\b"
+          "match": "\\b(if|else|foreach|in|match|func|struct|trait|new|return|constrained|field|method|import|as|module)\\b"
         }
       ]
     },
@@ -52,7 +98,7 @@
       "patterns": [
         {
           "name": "storage.type.petra",
-          "match": "\\b(Int|Float|String|Bool|List|Option|Result|Self)\\b"
+          "match": "\\b(Int8|Int16|Int32|Int64|UInt8|UInt16|UInt32|UInt64|Float32|Float64|String|Bool|List|Option|Result|Self)\\b"
         }
       ]
     },
@@ -104,19 +150,19 @@
       "patterns": [
         {
           "name": "meta.function-call.petra",
-          "begin": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*(#\\[)",
+          "begin": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*(#\\{)",
           "beginCaptures": {
             "1": {
               "name": "entity.name.function.petra"
             },
             "2": {
-              "name": "punctuation.section.expression.brackets.begin.petra"
+              "name": "punctuation.definition.brackets.begin.petra"
             }
           },
-          "end": "\\]#",
+          "end": "\\}#",
           "endCaptures": {
             "0": {
-              "name": "punctuation.section.expression.brackets.end.petra"
+              "name": "punctuation.definition.brackets.end.petra"
             }
           },
           "patterns": [
@@ -127,7 +173,7 @@
         },
         {
           "name": "entity.name.function.method.petra",
-          "match": "(?<=method\\s+#\\[)[a-zA-Z_][a-zA-Z0-9_]*(?=\\]#)"
+          "match": "(?<=method\\s+#\\{)[a-zA-Z_][a-zA-Z0-9_]*(?=\\}#)"
         }
       ]
     },
@@ -136,10 +182,6 @@
         {
           "name": "keyword.operator.petra",
           "match": "(:=|:|=|->|=>|\\+|-|\\*|/|%|==|!=|<|>|<=|>=)"
-        },
-        {
-          "name": "keyword.operator.word.petra",
-          "match": "\\b(and|or|not)\\b"
         },
         {
           "name": "keyword.operator.pipe.petra",
@@ -151,54 +193,14 @@
         }
       ]
     },
-    "expression_brackets": {
-      "name": "meta.expression.petra",
-      "begin": "#\\[",
-      "beginCaptures": {
-        "0": {
-          "name": "punctuation.section.expression.brackets.begin.petra"
-        }
-      },
-      "end": "\\]#",
-      "endCaptures": {
-        "0": {
-          "name": "punctuation.section.expression.brackets.end.petra"
-        }
-      },
-      "patterns": [
-        {
-          "include": "$self"
-        }
-      ]
-    },
-    "list_brackets": {
-      "name": "meta.list.petra",
-      "begin": "\\{\\|",
-      "beginCaptures": {
-        "0": {
-          "name": "punctuation.section.list.brackets.begin.petra"
-        }
-      },
-      "end": "\\|\\}",
-      "endCaptures": {
-        "0": {
-          "name": "punctuation.section.list.brackets.end.petra"
-        }
-      },
-      "patterns": [
-        {
-          "include": "$self"
-        }
-      ]
-    },
     "modules": {
       "patterns": [
         {
           "name": "meta.module.declaration.petra",
-          "match": "(#\\[)(module)\\s+(::)\\s+([A-Z][a-zA-Z0-9]*(::[A-Z][a-zA-Z0-9]*)*)(\\]#)",
+          "match": "(#\\{)(module)\\s+(::)\\s+([A-Z][a-zA-Z0-9]*(::[A-Z][a-zA-Z0-9]*)*)(\\}#)",
           "captures": {
             "1": {
-              "name": "punctuation.section.expression.brackets.begin.petra"
+              "name": "punctuation.definition.brackets.begin.petra"
             },
             "2": {
               "name": "keyword.control.module.petra"
@@ -210,16 +212,16 @@
               "name": "entity.name.module.petra"
             },
             "6": {
-              "name": "punctuation.section.expression.brackets.end.petra"
+              "name": "punctuation.definition.brackets.end.petra"
             }
           }
         },
         {
           "name": "meta.import.petra",
-          "match": "(#\\[)(import)\\s+(::)\\s+([A-Z][a-zA-Z0-9]*(::[A-Z][a-zA-Z0-9]*)*)\\s+(as)\\s+([A-Z][a-zA-Z0-9]*)(\\]#)",
+          "match": "(#\\{)(import)\\s+(::)\\s+([A-Z][a-zA-Z0-9]*(::[A-Z][a-zA-Z0-9]*)*)\\s+(as)\\s+([A-Z][a-zA-Z0-9]*)(\\}#)",
           "captures": {
             "1": {
-              "name": "punctuation.section.expression.brackets.begin.petra"
+              "name": "punctuation.definition.brackets.begin.petra"
             },
             "2": {
               "name": "keyword.control.import.petra"
@@ -237,7 +239,7 @@
               "name": "entity.name.module.alias.petra"
             },
             "8": {
-              "name": "punctuation.section.expression.brackets.end.petra"
+              "name": "punctuation.definition.brackets.end.petra"
             }
           }
         }
