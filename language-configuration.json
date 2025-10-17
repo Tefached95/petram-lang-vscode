@@ -1,72 +1,92 @@
 {
     "comments": {
-        // symbol used for single line comment. Remove this entry if your language does not support line comments
         "lineComment": "--",
-        // symbols used for start and end a block comment. Remove this entry if your language does not support block comments
         "blockComment": [
             "{-",
             "-}"
         ]
     },
-    // symbols used as brackets
     "brackets": [
         [
-            "{|",
-            "|}"
-        ],
-        [
-            "#[",
-            "]#"
+            "[",
+            "]"
         ],
         [
             "(",
             ")"
+        ],
+        [
+            "{",
+            "}"
         ]
     ],
-    // symbols that are auto closed when typing
     "autoClosingPairs": [
-        [
-            "{|",
-            "|}"
-        ],
-        [
-            "#[",
-            "]#"
-        ],
-        [
-            "(",
-            ")"
-        ],
-        [
-            "\"",
-            "\""
-        ],
-        [
-            "'",
-            "'"
-        ]
+        {
+            "open": "[",
+            "close": "]"
+        },
+        {
+            "open": "(",
+            "close": ")"
+        },
+        {
+            "open": "{",
+            "close": "}"
+        },
+        {
+            "open": "{-",
+            "close": "-}"
+        },
+        {
+            "open": "\"",
+            "close": "\"",
+            "notIn": [
+                "string",
+                "comment"
+            ]
+        }
     ],
-    // symbols that can be used to surround a selection
     "surroundingPairs": [
         [
-            "{|",
-            "|}"
-        ],
-        [
-            "#[",
-            "]#"
+            "[",
+            "]"
         ],
         [
             "(",
             ")"
         ],
         [
-            "\"",
-            "\""
+            "{",
+            "}"
         ],
         [
-            "'",
-            "'"
+            "\"",
+            "\""
         ]
+    ],
+    "folding": {
+        "markers": {
+            "start": "\\b(?:func|struct|trait|if|elif|else|while|for|match|invariant)\\b",
+            "end": "\\bend\\b"
+        }
+    },
+    "wordPattern": "(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\#\\%\\^\\&\\*\\(\\)\\-\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\?\\s]+)",
+    "indentationRules": {
+        "increaseIndentPattern": "\\b(?:func|struct|trait|if|elif|else|while|for|match|invariant)\\b.*$",
+        "decreaseIndentPattern": "^\\s*\\bend\\b"
+    },
+    "onEnterRules": [
+        {
+            "beforeText": "\\b(?:func|struct|trait|if|elif|else|while|for|match|invariant)\\b.*$",
+            "action": {
+                "indent": "indent"
+            }
+        },
+        {
+            "beforeText": "^\\s*case\\s+.*->\\s*$",
+            "action": {
+                "indent": "indent"
+            }
+        }
     ]
 }
