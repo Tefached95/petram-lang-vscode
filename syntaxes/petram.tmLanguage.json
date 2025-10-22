@@ -101,7 +101,7 @@
       }
     },
     "const_declaration": {
-      "match": "\\b(const)\\s+(?:([A-Z][A-Za-z0-9_]*)(::))?([A-Z_][A-Z0-9_]*)\\s*(:)\\s*([A-Za-z0-9_<>,\\s\\[\\];]+)\\s*(=)",
+      "match": "\\b(const)\\s+(?:([A-Z][A-Za-z0-9_]*)(::))?([A-Za-z_][A-Za-z0-9_]*)(?:\\s*(:)\\s*([A-Za-z0-9_<>,\\s\\[\\];]+))?\\s*(=)",
       "captures": {
         "1": {
           "name": "keyword.other.const.petra"
@@ -145,6 +145,12 @@
       },
       "patterns": [
         {
+          "include": "#multiline_comment"
+        },
+        {
+          "include": "#line_comment"
+        },
+        {
           "include": "#function_signature"
         },
         {
@@ -179,6 +185,12 @@
         }
       },
       "patterns": [
+        {
+          "include": "#multiline_comment"
+        },
+        {
+          "include": "#line_comment"
+        },
         {
           "include": "#function_signature"
         },
@@ -215,6 +227,12 @@
       },
       "patterns": [
         {
+          "include": "#multiline_comment"
+        },
+        {
+          "include": "#line_comment"
+        },
+        {
           "include": "#function_signature"
         },
         {
@@ -224,6 +242,12 @@
     },
     "function_signature": {
       "patterns": [
+        {
+          "include": "#multiline_comment"
+        },
+        {
+          "include": "#line_comment"
+        },
         {
           "match": "([a-z_][a-zA-Z0-9_]*)\\s*(:)\\s*([A-Za-z0-9_<>,\\s\\[\\];\\*]+)",
           "captures": {
@@ -279,6 +303,12 @@
       },
       "patterns": [
         {
+          "include": "#multiline_comment"
+        },
+        {
+          "include": "#line_comment"
+        },
+        {
           "include": "#invariant_block"
         },
         {
@@ -294,12 +324,6 @@
               "name": "storage.type.petra"
             }
           }
-        },
-        {
-          "include": "#multiline_comment"
-        },
-        {
-          "include": "#line_comment"
         }
       ]
     },
@@ -318,6 +342,12 @@
         }
       },
       "patterns": [
+        {
+          "include": "#multiline_comment"
+        },
+        {
+          "include": "#line_comment"
+        },
         {
           "include": "#expressions"
         }
@@ -345,6 +375,12 @@
       },
       "patterns": [
         {
+          "include": "#multiline_comment"
+        },
+        {
+          "include": "#line_comment"
+        },
+        {
           "match": "\\b(func)\\s*\\((self)\\s*:\\s*(Self)\\)\\s+([a-z_][a-zA-Z0-9_]*)\\s*\\(([^)]*)\\)\\s*(:)\\s*([A-Za-z0-9_<>,\\s\\[\\];]+)",
           "captures": {
             "1": {
@@ -369,12 +405,6 @@
               "name": "storage.type.petra"
             }
           }
-        },
-        {
-          "include": "#multiline_comment"
-        },
-        {
-          "include": "#line_comment"
         }
       ]
     },
@@ -508,6 +538,12 @@
       },
       "patterns": [
         {
+          "include": "#multiline_comment"
+        },
+        {
+          "include": "#line_comment"
+        },
+        {
           "match": "\\b(case)\\s+([A-Za-z0-9_:]+)(?:\\(([^)]*)\\))?\\s*(->)",
           "captures": {
             "1": {
@@ -600,7 +636,7 @@
           }
         },
         {
-          "match": "\\b(const)\\s+([a-z_][a-zA-Z0-9_]*)\\s*(:)\\s*([A-Za-z0-9_<>,\\s\\[\\];]+)\\s*(=)",
+          "match": "\\b(const)\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*(:)\\s*([A-Za-z0-9_<>,\\s\\[\\];]+)\\s*(=)",
           "captures": {
             "1": {
               "name": "keyword.other.const.petra"
@@ -620,7 +656,7 @@
           }
         },
         {
-          "match": "\\b(const)\\s+([a-z_][a-zA-Z0-9_]*)\\s*(=)",
+          "match": "\\b(const)\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*(=)",
           "captures": {
             "1": {
               "name": "keyword.other.const.petra"
@@ -649,6 +685,12 @@
     },
     "expressions": {
       "patterns": [
+        {
+          "include": "#line_comment"
+        },
+        {
+          "include": "#multiline_comment"
+        },
         {
           "include": "#string_interpolation"
         },
@@ -690,6 +732,12 @@
       },
       "patterns": [
         {
+          "include": "#multiline_comment"
+        },
+        {
+          "include": "#line_comment"
+        },
+        {
           "match": "([a-z_][a-zA-Z0-9_]*)\\s*(:)\\s*([A-Za-z0-9_<>,\\s\\[\\];]+)",
           "captures": {
             "1": {
@@ -721,6 +769,12 @@
       "end": "\\)",
       "patterns": [
         {
+          "include": "#multiline_comment"
+        },
+        {
+          "include": "#line_comment"
+        },
+        {
           "match": "([a-z_][a-zA-Z0-9_]*)\\s*(:)",
           "captures": {
             "1": {
@@ -745,6 +799,12 @@
       },
       "end": "\\}",
       "patterns": [
+        {
+          "include": "#multiline_comment"
+        },
+        {
+          "include": "#line_comment"
+        },
         {
           "match": "([a-z_][a-zA-Z0-9_]*)\\s*(:)",
           "captures": {

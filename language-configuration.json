@@ -1,6 +1,9 @@
 {
     "comments": {
-        "lineComment": "--",
+        "lineComment": {
+            "comment": "--",
+            "noIndent": false
+        },
         "blockComment": [
             "{-",
             "-}"
@@ -66,8 +69,8 @@
     ],
     "folding": {
         "markers": {
-            "start": "\\b(?:func|struct|trait|if|elif|else|while|for|match|invariant)\\b",
-            "end": "\\bend\\b"
+            "start": "^\\s*\\b(?:func|struct|trait|if|elif|else|while|for|match|invariant)\\b",
+            "end": "^\\s*\\bend\\b"
         }
     },
     "wordPattern": "(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\#\\%\\^\\&\\*\\(\\)\\-\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\?\\s]+)",
